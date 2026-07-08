@@ -22,12 +22,20 @@ jobs:
           python-version: "3.11"
  
       - name: Install Dependencies
-        run: |
+        run: |                                             # | this single bar line is used for running .yaml codes
           pip install -r requirements.txt
- 
+
+      - name: Install Pytest
+        run: |
+            pip install pytest
+
+      - name: Run API Tests
+        run: |
+            pytest tests/
+
       - name: Verify Imports
         run: |
-          python -c "import fastapi"
+          python -c "import fastapi"                        # this can be used to train the model in the pipeline
           python -c "import mlflow"
           python -c "import sklearn"
  
